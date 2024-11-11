@@ -101,12 +101,36 @@ class LoginUserViewSet(APIView):
                 }
             }
             
-            return Response(data,status=status.HTTP_201_CREATED)
+            return Response(data,status=200)
         
         except InterruptedError as e:
                 print("Fetal Error", e)
+
+class UserDetailsViewSet(APIView):
     
-    
+    # create new user with password and validation
+    @auth
+    def get(self, request, user_id):
+        # import ipdb
+        # ipdb.set_trace()
+        # body=request.data
+        # token = request.headers
+        # print(token)
+        
+        try:
+            
+            user=UserAccount.objects.filter(id=user_id)
+            if not user.exists():
+                return Response({'msg': "Invalid User Id", },status=status.HTTP_400_BAD_REQUEST)
+            
+            user=UserAccount.objects.get(id=user_id)
+            serialized_user=UserAccountSerializer(user).data
+            
+            return Response({'msg': 'User Details Fetch successfuly', 'result': serialized_user},status=200)
+        
+        except InterruptedError as e:
+                print("Fetal Error", e)
+                    
 
 # User Posts
 class UserPostsViewSet(APIView):
