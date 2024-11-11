@@ -11,7 +11,7 @@ class UserAccountSerializer(serializers.ModelSerializer):
     # posts=serializers.SerializerMethodField()
     class Meta:
         model = UserAccount
-        fields = ['id', 'firstname', 'lastname']
+        fields = ['id', 'firstname', 'lastname', 'username']
         
     # def get_posts(self,obj):
     #     posts=obj.post_set.all()

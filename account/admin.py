@@ -5,13 +5,16 @@ from .models import UserAccount, Post
 class UserAccountAdmin(admin.ModelAdmin):
     list_display=[
         'id',
+        'username',
         'firstname',
         'lastname',
     ]
     search_fields=[
+        'username',
         'firstname',
         'lastname',
     ]
+    readonly_fields = ['password']
     
 class PostAdmin(admin.ModelAdmin):
     list_display=[
