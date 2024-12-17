@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'graphene_django',
     'account',
 ]
 
@@ -76,18 +77,18 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
     # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': 'mytestdb',  # Your PostgreSQL database name
-    #     'USER': 'root',   # The PostgreSQL user you created
-    #     'PASSWORD': 'root',  # The password for your PostgreSQL user
-    #     'HOST': 'localhost',  # Assuming you're running PostgreSQL locally
-    #     'PORT': '5432',  # Default PostgreSQL port (change if needed)
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
     # }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'mytestdb',  # Your PostgreSQL database name
+        'USER': 'root',   # The PostgreSQL user you created
+        'PASSWORD': 'root',  # The password for your PostgreSQL user
+        'HOST': 'localhost',  # Assuming you're running PostgreSQL locally
+        'PORT': '5432',  # Default PostgreSQL port (change if needed)
+    }
 }
 
 
@@ -108,6 +109,10 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# GRAPHENE = {
+#     "SCHEMA": "myproject.schema.schema"
+# }
 
 
 # Internationalization

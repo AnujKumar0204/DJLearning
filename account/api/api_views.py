@@ -13,7 +13,7 @@ class UserAccountViewSet(viewsets.ModelViewSet):
     
 # Post Viewset
 class PostViewSet(viewsets.ModelViewSet):
-    queryset = Post.objects.all()
+    queryset = Post.objects.all()[:100000]
     serializer_class = PostSerializer
     
 # User Creation

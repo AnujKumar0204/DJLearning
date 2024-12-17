@@ -16,10 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from rest_framework.authtoken.views import obtain_auth_token
+from graphene_django.views import GraphQLView
+from django.views.decorators.csrf import csrf_exempt
+from myproject.schema import schema
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/',include('account.urls')),
-    path('api/token/', obtain_auth_token, name='api_token_auth'),
+    path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True, schema=schema))),
 ]

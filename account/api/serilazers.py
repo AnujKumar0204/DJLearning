@@ -19,7 +19,7 @@ class UserAccountSerializer(serializers.ModelSerializer):
 
 # Post Serializer
 class PostSerializer(serializers.ModelSerializer):
-    user=UserAccountSerializer()
+    # user=UserAccountSerializer()
     class Meta:
         model = Post
         fields = ['id', 'user', 'title', 'description']
