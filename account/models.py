@@ -25,3 +25,31 @@ class Post(models.Model):
     user= models.ForeignKey(UserAccount, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     description = models.TextField()
+    
+    
+class InterestCategory(models.Model):
+    name = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
+    
+    
+    def __str__(self):
+      return self.name
+
+class Interest(models.Model):
+    category= models.ForeignKey(InterestCategory, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+      return self.name
+    
+class UserInterestMap(models.Model):
+    user = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
+    interest = models.ForeignKey(Interest, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
+    
+    # def __str__(self):
+    #   return self.user
